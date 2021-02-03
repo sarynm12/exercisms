@@ -1,8 +1,15 @@
-=begin
-Write your code for the 'Word Count' exercise in this file. Make the tests in
-`word_count_test.rb` pass.
+class Phrase
+  attr_reader :string
 
-To get started with TDD, see the `README.md` file in your
-`ruby/word-count` directory.
-=end
+  def initialize(string)
+    @string = string.downcase.scan(/\b[\w']+\b/)
+  end
 
+  def word_count
+    result = Hash.new(0)
+    @string.each_with_object(Hash.new(0)) do |word, acc|
+      acc[word] += 1
+    end
+  end
+
+end
